@@ -5,15 +5,47 @@
 (defn main []
   (f/run
     (m/MaterialApp
-      .title "Welcome to Flutter"
-      .theme (m/ThemeData .primarySwatch m.Colors/pink))
+      .title "edn to json"
+      .theme (m/ThemeData .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepPurple)))
     .home
-    (m/Scaffold
-      .appBar (m/AppBar
-                .title (m/Text "Welcome to ClojureDart")))
-    .body
-    m/Center
-    (m/Text "Let's get coding!"
-       .style (m/TextStyle
-                .color m.Colors/red
-                .fontSize 32.0))))
+    (f/widget
+     :get {{{inverse-primary .-inversePrimary
+             primary-container .-primaryContainer} .-colorScheme}  m/Theme}
+     (m/Scaffold)
+     .body
+     (m/Column .mainAxisAlignment m/MainAxisAlignment.spaceAround)
+     .children
+     [(m/Expanded
+       .child (m/Container
+               .color inverse-primary
+               .child (m/Center
+                       .child (m/Text "edn to json"
+                                      .style (m/TextStyle
+                                              .fontWeight m.FontWeight/bold
+                                              .fontSize 36.0
+                                              .color m/Colors.white)))))
+      (m/Expanded
+       .flex 5
+       .child (m/Container
+               .color primary-container
+               .child (m/Row
+                       .children [(m/Expanded
+                                   .child (m/Padding
+                                           .padding (m/EdgeInsets.all 40)
+                                           .child (m/TextField
+                                                   .maxLines 500
+                                                   .decoration (m/InputDecoration
+                                                                .border (m/OutlineInputBorder)
+                                                                .hintText "edn"
+                                                                .fillColor m/Colors.white
+                                                                .filled true))))
+                                  (m/Expanded
+                                   .child (m/Padding
+                                           .padding (m/EdgeInsets.all 40)
+                                           .child (m/TextField
+                                                   .maxLines 500
+                                                   .decoration (m/InputDecoration
+                                                                .border (m/OutlineInputBorder)
+                                                                .hintText "json"
+                                                                .fillColor m/Colors.white
+                                                                .filled true))))])))])))
