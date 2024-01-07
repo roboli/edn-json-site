@@ -8,44 +8,43 @@
       .title "edn to json"
       .theme (m/ThemeData .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepPurple)))
     .home
-    (f/widget
-     :get {{{inverse-primary .-inversePrimary
-             primary-container .-primaryContainer} .-colorScheme}  m/Theme}
-     (m/Scaffold)
-     .body
-     (m/Column .mainAxisAlignment m/MainAxisAlignment.spaceAround)
-     .children
-     [(m/Expanded
-       .child (m/Container
-               .color inverse-primary
-               .child (m/Center
-                       .child (m/Text "edn to json"
-                                      .style (m/TextStyle
-                                              .fontWeight m.FontWeight/bold
-                                              .fontSize 36.0
-                                              .color m/Colors.white)))))
-      (m/Expanded
-       .flex 5
-       .child (m/Container
-               .color primary-container
-               .child (m/Row
-                       .children [(m/Expanded
-                                   .child (m/Padding
-                                           .padding (m/EdgeInsets.all 40)
-                                           .child (m/TextField
-                                                   .maxLines 500
-                                                   .decoration (m/InputDecoration
-                                                                .border (m/OutlineInputBorder)
-                                                                .hintText "edn"
-                                                                .fillColor m/Colors.white
-                                                                .filled true))))
-                                  (m/Expanded
-                                   .child (m/Padding
-                                           .padding (m/EdgeInsets.all 40)
-                                           .child (m/TextField
-                                                   .maxLines 500
-                                                   .decoration (m/InputDecoration
-                                                                .border (m/OutlineInputBorder)
-                                                                .hintText "json"
-                                                                .fillColor m/Colors.white
-                                                                .filled true))))])))])))
+    (m/Scaffold)
+    .body
+    :get {{{inverse-primary .-inversePrimary
+              primary-container .-primaryContainer} .-colorScheme}  m/Theme}
+    (m/Column .mainAxisAlignment m/MainAxisAlignment.spaceAround)
+    .children
+    [(m/Expanded
+      .child (m/Container
+              .color inverse-primary
+              .child (m/Center
+                      .child (m/Text "edn to json"
+                                     .style (m/TextStyle
+                                             .fontWeight m.FontWeight/bold
+                                             .fontSize 36.0
+                                             .color m/Colors.white)))))
+     (m/Expanded
+      .flex 5
+      .child (m/Container
+              .color primary-container
+              .child (m/Row
+                      .children [(m/Expanded
+                                  .child (m/Padding
+                                          .padding (m/EdgeInsets.all 40)
+                                          .child (m/TextField
+                                                  .maxLines 500
+                                                  .decoration (m/InputDecoration
+                                                               .border (m/OutlineInputBorder)
+                                                               .hintText "edn"
+                                                               .fillColor m/Colors.white
+                                                               .filled true))))
+                                 (m/Expanded
+                                  .child (m/Padding
+                                          .padding (m/EdgeInsets.all 40)
+                                          .child (m/TextField
+                                                  .maxLines 500
+                                                  .decoration (m/InputDecoration
+                                                               .border (m/OutlineInputBorder)
+                                                               .hintText "json"
+                                                               .fillColor m/Colors.white
+                                                               .filled true))))])))]))
