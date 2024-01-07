@@ -5,13 +5,14 @@
 (defn main []
   (f/run
     (m/MaterialApp
-      .title "edn to json"
-      .theme (m/ThemeData .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepPurple)))
+     .title "edn to json"
+     .theme (m/ThemeData .colorScheme (m/ColorScheme.fromSeed .seedColor m/Colors.deepPurple)))
     .home
     (m/Scaffold)
     .body
     :get {{{inverse-primary .-inversePrimary
-              primary-container .-primaryContainer} .-colorScheme}  m/Theme}
+            primary-container .-primaryContainer} .-colorScheme}  m/Theme}
+    :managed [text-controller (m/TextEditingController)]
     (m/Column .mainAxisAlignment m/MainAxisAlignment.spaceAround)
     .children
     [(m/Expanded
@@ -32,6 +33,9 @@
                                   .child (m/Padding
                                           .padding (m/EdgeInsets.all 40)
                                           .child (m/TextField
+                                                  .controller text-controller
+                                                  .onChanged (fn [v]
+                                                               (set! (.-text text-controller) v))
                                                   .maxLines 500
                                                   .decoration (m/InputDecoration
                                                                .border (m/OutlineInputBorder)
@@ -42,6 +46,9 @@
                                   .child (m/Padding
                                           .padding (m/EdgeInsets.all 40)
                                           .child (m/TextField
+                                                  .controller text-controller
+                                                  .onChanged (fn [v]
+                                                               (set! (.-text text-controller) v))
                                                   .maxLines 500
                                                   .decoration (m/InputDecoration
                                                                .border (m/OutlineInputBorder)
